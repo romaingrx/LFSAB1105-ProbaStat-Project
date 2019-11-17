@@ -8,6 +8,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.special import factorial
+from mpl_toolkits.mplot3d import Axes3D
+#à ajouter pour plot en 3d
+#fig = plt.figure()
+#ax = fig.add_subplot(111, projection='3d')
+
 t=np.linspace(1,40,40)
 d=np.exp(-13)*np.power(13,t)/factorial(t)
 plt.plot(t,d,'o')
