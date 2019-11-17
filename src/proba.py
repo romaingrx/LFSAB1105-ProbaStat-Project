@@ -13,6 +13,8 @@ from mpl_toolkits.mplot3d import Axes3D
 #fig = plt.figure()
 #ax = fig.add_subplot(111, projection='3d')
 
+#QUESION 1
+
 t=np.linspace(1,40,40)
 d=np.exp(-13)*np.power(13,t)/factorial(t)
 plt.plot(t,d,'o')
@@ -21,6 +23,10 @@ plt.xlabel("Computation in one hour")
 plt.ylabel("P(N)")
 plt.show()
 # With this distribution, E(x)=V(x)=13 ==> standart deviation= 3.60555
+
+
+
+#QUESTION 2
 # On calcule la distribution conditionelle P(N1|n) en considérant n constant pour que lambda le soit aussi
 #calcul de la distribution de P(N1|360) :
  
@@ -58,6 +64,7 @@ print(d)
 # avec dès lors E(N1|n)=0.2*n=V(N1|n) et donc ==> standart deviation =  sqrt(0.2*n)
 """
 
+#QUESTION 3
 #The expression of the exact joint distribution is given by : P(N1=j,N=n)=P(N1=j|N=n)*P(N=n)
 #plot de la pmf d'abord pour un n défini(13) ensuite en 3D:
 
