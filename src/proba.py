@@ -84,3 +84,14 @@ plt.show()
 
 
 #fonction calculant la distribution de P()
+#QUESTION 4
+#pmf of N1 = P(N1=j) = Somme (sur les i) des P(N1=j,N=i) = The joint cumulative distribution functionn of N and N1
+d=0
+t=np.linspace(1,40,40)
+for i in np.linspace(0,2000):
+    d+=np.exp(-i*0.2)*np.power(i*0.2,t)/factorial(t)
+plt.plot(t,d,'o')
+plt.title("Statistical distribution of N1")
+plt.xlabel("Computation in one hour")
+plt.ylabel("P(N1)")
+plt.show()
