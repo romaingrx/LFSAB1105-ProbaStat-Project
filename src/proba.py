@@ -20,8 +20,9 @@ from mpl_toolkits.mplot3d import Axes3D
 # Labelisez bien vos axes comme ceci : 'Nom (unités)'
 # Ajoutez une légende propre pour chaque courbe comme ceci
 # EXEMPLE:
-#       def Harry_plotter(save=False, name='Harry')
-#           plt.Figure()
+#       def Harry_ploter(save=False, name='Harry')
+#           plt.Figure(figsize=(15,20))
+#           plt.title('Harry mon bon ploter')
 #           plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0)) # Notation scientifique
 #           plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0)) # Notation scientifique
 #           plt.xlabel('Temps (s)')
