@@ -5,18 +5,27 @@
 @date :Sunday, 17 November 2019
 """
 #fonction calculant la distribution de P(N=j) avec 13 computations/Heure
-import matplotlib.pyplot as plt
 import numpy as np
 from scipy.special import factorial
+import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 #à ajouter pour plot en 3d
 #fig = plt.figure()
 #ax = fig.add_subplot(111, projection='3d')
 
-# QUESION 1
+PN1 = 0.2
+PN2 = 0.5
+PN3 = 0.3
+DAY_MEAN  = 312
+HOUR_MEAN = DAY_MEAN/24
+
+def poisson(t, lam):
+    return np.exp(-lam)*np.power(lam,t)/factorial(t)
+
+# QUESTION 1
 def Q1():
-    t=np.linspace(1,40,40)
-    d=np.exp(-13)*np.power(13,t)/factorial(t)
+    t = np.linspace(1,40,40)
+    d = poisson(t, 13)
     plt.plot(t,d,'o')
     plt.title("Statistical distribution of N")
     plt.xlabel("Computation in one hour")
@@ -30,13 +39,14 @@ def Q1():
 # On calcule la distribution conditionelle P(N1|n) en considérant n constant pour que lambda le soit aussi
 #calcul de la distribution de P(N1|360) :
 def Q2():
-    t=np.linspace(20,120,101)
-    d=np.exp(-360*0.2)*np.power(360*0.2,t)/factorial(t)
+    global DAY_MEAN, PN1
+    t = np.linspace(20,120,101)
+    d = poisson(t, DAY_MEAN*PN1)
 
     plt.plot(t,d,'o')
     plt.title("Statistical distribution of N1")
     plt.xlabel("Computation in one day")
-    plt.ylabel("P(n1|360)")
+    plt.ylabel("P(N1|360)")
     plt.show()
 
 #fonction 3d représentant toutes les autres (expérimentale):
@@ -89,8 +99,8 @@ def Q3():
 def Q4():
     d=0
     t=np.linspace(1,40,40)
-    for i in np.linspace(0,2000):
-        d+=np.exp(-i*0.2)*np.power(i*0.2,t)/factorial(t)
+    for i in range(2000):
+        d+=np.exp(-i*PN1)*np.power(i*PN1,t)/factorial(t)
     plt.plot(t,d,'o')
     plt.title("Statistical distribution of N1")
     plt.xlabel("Computation in one hour")
@@ -102,3 +112,13 @@ if __name__=='__main__':
     # Q2()
     # Q3()
     # Q4()
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    theta = np.linspace(-4 * np.pi, 4 * np.pi, 100)
+    z = np.linspace(-2, 2, 100)
+    x = z*0
+    y = z**2
+    ax.scatter(x, y, z, label='parametric curve')
+    ax.legend()
+
+    plt.show()
