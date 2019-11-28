@@ -13,6 +13,7 @@ from mpl_toolkits.mplot3d import Axes3D
 #fig = plt.figure()
 #ax = fig.add_subplot(111, projection='3d')
 
+<<<<<<< HEAD
 PN1 = 0.2
 PN2 = 0.5
 PN3 = 0.3
@@ -23,6 +24,31 @@ def poisson(t, lam):
     return np.exp(-lam)*np.power(lam,t)/factorial(t)
 
 # QUESTION 1
+=======
+# ================ HOW TO DO ===================
+# ----------------   Plots   -------------------
+# Utilisez le 'purple' de préférence pour vos graphs
+# Mettez vos axes en notations scientifiques
+# Labelisez bien vos axes comme ceci : 'Nom (unités)'
+# Ajoutez une légende propre pour chaque courbe comme ceci
+# EXEMPLE:
+#       def Harry_ploter(save=False, name='Harry')
+#           plt.Figure(figsize=(15,20))
+#           plt.title('Harry mon bon ploter')
+#           plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0)) # Notation scientifique
+#           plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0)) # Notation scientifique
+#           plt.xlabel('Temps (s)')
+#           plt.ylabel('Energie reçue (kWh)')
+#           id1 = plt.plot(x1, y1, 'o', color='purple')
+#           id2 = plt.plot(x2, y2, 'o', color='orange')
+#           plt.legend([id1, id2],['Courbe 1', 'Courbe 2']
+#           if save: plt.savefig('%s.png'%(name))
+#           else: plt.show()
+COLORS = [purple, orange, blue] = ['#9400D3', '#FFA500', '#0080FF']
+
+
+# QUESION 1
+>>>>>>> master
 def Q1():
     t = np.linspace(1,40,40)
     d = poisson(t, 13)
