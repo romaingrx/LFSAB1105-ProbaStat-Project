@@ -5,6 +5,13 @@
 @date : Friday, 08 November 2019
 """
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from utils import readCPU1, readCPU2
+# ================ GLOBAL VARIABLES ===================
+VAR = 100.0
+STD = np.sqrt(VAR)
+
 
 
 # ================ HOW TO DO ===================
@@ -30,3 +37,7 @@ COLORS = [purple, orange, blue] = ['#9400D3', '#FFA500', '#0080FF']
 
 def main():
     return 0
+
+if __name__=='__main__':
+    df = readCPU1()
+    print(df[df.columns[1]])

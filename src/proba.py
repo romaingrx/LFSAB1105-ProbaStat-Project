@@ -13,18 +13,6 @@ from mpl_toolkits.mplot3d import Axes3D
 #fig = plt.figure()
 #ax = fig.add_subplot(111, projection='3d')
 
-<<<<<<< HEAD
-PN1 = 0.2
-PN2 = 0.5
-PN3 = 0.3
-DAY_MEAN  = 312
-HOUR_MEAN = DAY_MEAN/24
-
-def poisson(t, lam):
-    return np.exp(-lam)*np.power(lam,t)/factorial(t)
-
-# QUESTION 1
-=======
 # ================ HOW TO DO ===================
 # ----------------   Plots   -------------------
 # Utilisez le 'purple' de préférence pour vos graphs
@@ -46,9 +34,17 @@ def poisson(t, lam):
 #           else: plt.show()
 COLORS = [purple, orange, blue] = ['#9400D3', '#FFA500', '#0080FF']
 
+PN1 = 0.2
+PN2 = 0.5
+PN3 = 0.3
+DAY_MEAN  = 312
+HOUR_MEAN = DAY_MEAN/24
+
+def poisson(t, lam):
+    return np.exp(-lam)*np.power(lam,t)/factorial(t)
+
 
 # QUESION 1
->>>>>>> master
 def Q1():
     t = np.linspace(1,40,40)
     d = poisson(t, 13)
