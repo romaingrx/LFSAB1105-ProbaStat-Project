@@ -19,7 +19,7 @@ def Q1():
     d=np.exp(-13)*np.power(13,t)/factorial(t)
     plt.plot(t,d,'o')
     plt.title("Statistical distribution of N")
-    plt.xlabel("Computation in one hour")
+    plt.xlabel("Computations requests in one hour")
     plt.ylabel("P(N)")
     plt.show()
 # With this distribution, E(x)=V(x)=13 ==> standart deviation= 3.60555
@@ -30,11 +30,13 @@ def Q1():
 # On calcule la distribution conditionelle P(N1|n) en considérant n constant pour que lambda le soit aussi
 #calcul de la distribution de P(N1|360) :
 def Q2():
-    n1=np.linspace(0,360,360)
+    n1=np.linspace(0,100,360)
     d=comb(360,n1)*0.2**n1*0.8**(360-n1)
-
-    plt.plot(n1,d,'o')
-    plt.title("Statistical distribution of N1|N=n")
+    e=64
+    plt.plot(n1,d,"m")
+    plt.axvline(x=64, linewidth=0.5, color='r')
+    plt.axhline(y=0.03099, linewidth=0.5, color='r')
+    plt.title("Statistical distribution of N1|N=360")
     plt.xlabel("Computational requests treated by server 1 if N=360")
     plt.ylabel("P(N1|N=360)")
     plt.show()
@@ -72,15 +74,18 @@ def Q3():
     ax = fig.add_subplot(111, projection='3d')
  
     N=np.linspace(0,360,300)
-    N1=np.linspace(0,60,60)
+    N1=np.linspace(0,64,64)
     N1,N=np.meshgrid(N1,N)
 
     plt.xlabel("$N1$", fontsize=16)         
     plt.ylabel("$N$", fontsize=16)
     
     Z=comb(N,N1)*0.2**N1*0.8**(N-N1)
-    ax.plot_wireframe(N1, N, Z, rstride=2, cstride=2) 
+    ax.plot_wireframe(N1, N, Z, rstride=5, cstride=5) 
     plt.show()
+    
+    
+    
 
 
 
@@ -100,6 +105,6 @@ def Q4():
 
 if __name__=='__main__':
     # Q1()
-    # Q2()
-    Q3()
+    Q2()
+    #Q3()
     # Q4()
