@@ -7,7 +7,7 @@
 #fonction calculant la distribution de P(N=j) avec 13 computations/Heure
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.special import factorial
+from scipy.special import factorial, comb
 from mpl_toolkits.mplot3d import Axes3D
 #à ajouter pour plot en 3d
 #fig = plt.figure()
@@ -30,13 +30,13 @@ def Q1():
 # On calcule la distribution conditionelle P(N1|n) en considérant n constant pour que lambda le soit aussi
 #calcul de la distribution de P(N1|360) :
 def Q2():
-    t=np.linspace(20,120,101)
-    d=np.exp(-360*0.2)*np.power(360*0.2,t)/factorial(t)
+    n1=np.linspace(0,360,360)
+    d=comb(360,n1)*0.2**n1*0.8**(360-n1)
 
-    plt.plot(t,d,'o')
-    plt.title("Statistical distribution of N1")
-    plt.xlabel("Computation in one day")
-    plt.ylabel("P(n1|360)")
+    plt.plot(n1,d,'o')
+    plt.title("Statistical distribution of N1|N=n")
+    plt.xlabel("Computational requests treated by server 1 if N=360")
+    plt.ylabel("P(N1|N=360)")
     plt.show()
 
 #fonction 3d représentant toutes les autres (expérimentale):
@@ -66,31 +66,32 @@ print(d)
 
 # QUESTION 3
 #The expression of the exact joint distribution is given by : P(N1=j,N=n)=P(N1=j|N=n)*P(N=n)
-#plot de la pmf d'abord pour un n défini(13) ensuite en 3D:
+#plot en 3D pour N 0-360 et N1 0-60 (On remarque passage que la solution du point 2 est vérifiée):
 def Q3():
-    t=np.linspace(1,25,25)
-    d1=np.exp(-13)*(np.power(13,13))/factorial(13)
-    # print(np.power(13,13))
-    #print(13**(13))         ça donne pas la même chose Romaim Graux aide moi
-    d2=np.exp(-(13*0.2))*np.power(13*0.2,t)/factorial(t)
-    d=d1*d2
-    plt.plot(t,d,'o')
-    plt.title("pmf of the joint distribution of N1 and N")
-    plt.xlabel("Computation in one hour")
-    plt.ylabel("P(N1=j,N=n)")
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+ 
+    N=np.linspace(0,360,300)
+    N1=np.linspace(0,60,60)
+    N1,N=np.meshgrid(N1,N)
+
+    plt.xlabel("$N1$", fontsize=16)         
+    plt.ylabel("$N$", fontsize=16)
+    
+    Z=comb(N,N1)*0.2**N1*0.8**(N-N1)
+    ax.plot_wireframe(N1, N, Z, rstride=2, cstride=2) 
     plt.show()
-#ça , ça donne les probabilités que n vale 13 et que N1 vale l'absisse , il manque plus qu'a faire un plot en 3D je suppose.
 
 
 
-#fonction calculant la distribution de P()
 # QUESTION 4
 #pmf of N1 = P(N1=j) = Somme (sur les i) des P(N1=j,N=i) = The joint cumulative distribution functionn of N and N1
 def Q4():
     d=0
     t=np.linspace(1,40,40)
-    for i in np.linspace(0,2000):
+    for i in np.linspace(0,10):
         d+=np.exp(-i*0.2)*np.power(i*0.2,t)/factorial(t)
+        print (d)
     plt.plot(t,d,'o')
     plt.title("Statistical distribution of N1")
     plt.xlabel("Computation in one hour")
@@ -100,5 +101,5 @@ def Q4():
 if __name__=='__main__':
     # Q1()
     # Q2()
-    # Q3()
+    Q3()
     # Q4()
