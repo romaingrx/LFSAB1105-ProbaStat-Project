@@ -39,9 +39,56 @@ def Q3():
     df = readCPU1()
     dfLow  = np.array(df.loc[df['LowCPU'] == True]['OperatingTime'])
     dfHigh = np.array(df.loc[df['LowCPU'] == False]['OperatingTime'])
-    print(dfLow)
-    print(dfHigh)
+    
+    nLow = np.size(dfLow)
+    nHigh = np.size(dfHigh)
+    
+    varLow = np.var(dfLow)
+    varHigh = np.var(dfHigh)
+    
+    meanLow = np.mean(dfLow)
+    meanHigh = np.mean(dfHigh)
+    
+    Sp2 = (((nLow-1)*(varLow))+((nHigh-1)*(varHigh)))/(nLow+nHigh-2)
+    
+    t0 = ((meanLow-meanHigh))/((np.sqrt(Sp2))*(np.sqrt((1/nLow)+(1/nHigh))))
+    
+    tnn = nLow+nHigh-2
+    
+    alpha2 = 0.05/2
+    
+    ttab = 2.101 # juste la valeur dans vos tables avec df = 18 et t0.025
+    
+    
+
+    print('Number of low CPUs :',nLow)
+    print('Number of high CPuS :',nHigh)
+    
+    print('--------------------------')
+    
+    print('Variance of Low CPUs =',varLow)
+    print('Variance of High CPUs =', varHigh)
+    
+    print('--------------------------')
+    
+    print('Mean of Low CPUs =',meanLow)
+    print('Mean of High CPUs =',meanHigh)
+    
+    print('--------------------------')
+    
+    print('Sp^2 =',Sp2)
+    print('T0 =', t0)
+    print('Tnn,alpha/2 = (',tnn,',',alpha2,') =', ttab)
     return None
+
+
 
 if __name__=='__main__':
     Q3()
+    
+
+
+
+
+
+
