@@ -35,9 +35,13 @@ STD = np.sqrt(VAR)
 #           else: plt.show()
 COLORS = [purple, orange, blue] = ['#9400D3', '#FFA500', '#0080FF']
 
-def main():
-    return 0
+def Q3():
+    df = readCPU1()
+    dfLow  = np.array(df.loc[df['LowCPU'] == True]['OperatingTime'])
+    dfHigh = np.array(df.loc[df['LowCPU'] == False]['OperatingTime'])
+    print(dfLow)
+    print(dfHigh)
+    return None
 
 if __name__=='__main__':
-    df = readCPU1()
-    print(df[df.columns[1]])
+    Q3()
