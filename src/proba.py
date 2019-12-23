@@ -149,3 +149,29 @@ if __name__=='__main__':
     ax.legend()
 
     plt.show()
+    
+#partie pour calucler E(N1) et V(N1) du point 4
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.special import factorial , comb
+
+t=np.linspace(0,150,151)
+
+def Po(p):
+    return np.exp(-p)*np.power(p,t)/factorial(t)
+    
+
+
+def E(y,p):
+    return y@Po(0.2*p)
+
+
+#E(N1)
+print(E(t,312))
+#E(N1**2)
+print(E(t**2,312))
+#E(N1)**2
+print(E(t,312)**2)
+#V(N1)
+print(E(t**2,312)-E(t,312)**2)
+   
