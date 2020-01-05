@@ -103,20 +103,20 @@ print(d)
 def Q3():
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
- 
+
     N=np.linspace(0,360,300)
     N1=np.linspace(0,64,64)
     N1,N=np.meshgrid(N1,N)
 
-    plt.xlabel("$N1$", fontsize=16)         
+    plt.xlabel("$N1$", fontsize=16)
     plt.ylabel("$N$", fontsize=16)
-    
+
     Z=comb(N,N1)*0.2**N1*0.8**(N-N1)
-    ax.plot_wireframe(N1, N, Z, rstride=5, cstride=5) 
+    ax.plot_wireframe(N1, N, Z, rstride=5, cstride=5)
     plt.show()
-    
-    
-    
+
+
+
 
 
 
@@ -149,7 +149,7 @@ if __name__=='__main__':
     ax.legend()
 
     plt.show()
-    
+
 #partie pour calucler E(N1) et V(N1) du point 4
 import matplotlib.pyplot as plt
 import numpy as np
@@ -159,7 +159,7 @@ t=np.linspace(0,150,151)
 
 def Po(p):
     return np.exp(-p)*np.power(p,t)/factorial(t)
-    
+
 
 
 def E(y,p):
@@ -174,4 +174,3 @@ print(E(t**2,312))
 print(E(t,312)**2)
 #V(N1)
 print(E(t**2,312)-E(t,312)**2)
-   

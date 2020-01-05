@@ -1,0 +1,7 @@
+Model 1: Correlation coefficient: 0.97, least square err (SSE): 35597.73, std: 21.79
+Model 2: Correlation coefficient: 0.99, least square err (SSE):  6303.87, std:  9.17
+
+F-value for the test: F = 5.65
+
+95% level confience interval : [304.05, 340.71]
+
