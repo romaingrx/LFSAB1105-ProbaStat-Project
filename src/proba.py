@@ -150,7 +150,7 @@ if __name__=='__main__':
 
     plt.show()
     
-#partie pour calucler E(N1) et V(N1) du point 4
+#how to calculate E(N1) and V(N1).
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.special import factorial , comb
